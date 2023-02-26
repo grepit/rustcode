@@ -14,8 +14,18 @@ fn main() {
  let mut s = String::from("hello");
  let r3 = &mut s; // no problem
   chapter4_2(r3);
-   let mut sb = String::from("hello");
+   let mut sb = String::from("hello world");
+   sb.clear();
   first_word(&sb);
+
+
+
+    let sd = String::from("hello world");
+
+    let hello = &sd[0..5];
+    let world = &sd[6..11];
+    println!("a {}",hello);
+    println!("b {}",world);
 
 }
 
@@ -55,7 +65,9 @@ fn first_word(s: &String) -> usize {
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {
+        println!("item {}",i);
         if item == b' ' {
+          println!("found space {}",i);
             return i;
         }
     }
