@@ -10,7 +10,10 @@ fn main() {
    // let location:&str = "US";
    println!("-->: {} ",a);
   
-  chapter4_1()
+
+ let mut s = String::from("hello");
+ let r3 = &mut s; // no problem
+  chapter4_2(r3)
 
 }
 
@@ -36,3 +39,12 @@ fn chapter4_1() {
 fn makes_copy4_1(some_integer: i32) { // some_integer comes into scope
     println!("{}", some_integer);
 } // Here, some_integer goes out of scope. Nothing special happens.
+
+
+fn chapter4_2(some_string:  & mut str){
+    println!("see {}",some_string);
+    let mut abc = some_string.to_string();
+    abc.push_str("hhh");
+ println!("hi {}",abc)   
+    
+}
