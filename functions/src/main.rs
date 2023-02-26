@@ -13,7 +13,9 @@ fn main() {
 
  let mut s = String::from("hello");
  let r3 = &mut s; // no problem
-  chapter4_2(r3)
+  chapter4_2(r3);
+   let mut sb = String::from("hello");
+  first_word(&sb);
 
 }
 
@@ -47,4 +49,16 @@ fn chapter4_2(some_string:  & mut str){
     abc.push_str("hhh");
  println!("hi {}",abc)   
     
+}
+
+fn first_word(s: &String) -> usize {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
+
+    s.len()
 }
