@@ -29,5 +29,27 @@ println!("{:?}", v);
     let s2 = "bar";
     s1.push_str(s2);
     println!("s1 is {s1}");
+
+
+        let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used
+    println!("{}",s3);
+    println!("{}",s2);
+
+
+    let s5 = String::from("tic");
+    let s6 = String::from("tac");
+    let s7 = String::from("toe");
+
+    let s = s5 + "-" + &s6 + "-" + &s7;
+    println!("{}",s);
+
+
+let hello = "Здравствуйте";
+//notice the below is bytes so you have to incroment by 2 
+let answer = &hello[0..2];
+println!("{}",answer)
+
 }
 
