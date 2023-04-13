@@ -1,4 +1,6 @@
 
+use std::collections::HashMap;
+
 fn main() {
     let mut v = vec![1, 2, 3, 4, 5];
 
@@ -49,7 +51,35 @@ println!("{:?}", v);
 let hello = "Здравствуйте";
 //notice the below is bytes so you have to incroment by 2 
 let answer = &hello[0..2];
-println!("{}",answer)
+println!("{}",answer);
+
+
+ 
+
+    let mut scores = HashMap::new();
+
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+    println!("{:?}",scores);
+
+    //here how you get a single value by key
+    let my_key = String::from("Blue");
+
+    let score = scores.get(&my_key).copied().unwrap_or(0);
+    println!("{}",score);
+
+    //this how you can overwrite/update existing key
+    scores.insert(String::from("Blue"), 25);
+
+    //or simply check if its there update otherwise insert
+    scores.entry(String::from("Blue")).or_insert(50);
+    
+    println!("{:?}", scores);
+
+    //this is how to get all the values
+    for (key, value) in &scores {
+        println!("{key}: {value}");
+    }
 
 }
 
