@@ -1,15 +1,10 @@
-use aggregator::{Summary, Tweet};
+mod greeting;
+mod person;
 
+use person::Person;
+use greeting::Greeting;
 
 fn main() {
-    let tweet = Tweet {
-        username: String::from("horse_ebooks world"),
-        content: String::from(
-            "of course, as you probably already know, people",
-        ),
-        reply: false,
-        retweet: false,
-    };
-
-    println!("1 new tweet: {}", tweet.summarize());
+    let person = Person { name: "Alice".to_string() };
+    person.greet();
 }
