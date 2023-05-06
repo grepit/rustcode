@@ -11,6 +11,7 @@ pub struct NewsArticle {
 
 impl Summary for NewsArticle {
     fn summarize(&self) -> String {
+
         format!("{}, by {} ({})", self.headline, self.author, self.location)
     }
 }
@@ -24,6 +25,10 @@ pub struct Tweet {
 
 impl Summary for Tweet {
     fn summarize(&self) -> String {
+        //Notice the print function will never work here
+        //The reason you can't print to the console inside an implementation of a trait like in your example code is because the summarize method is expected to return a String, not to print anything to the console.
+       //println!("This is a message printed to the console.");
         format!("{}: {}", self.username, self.content)
+        
     }
 }
