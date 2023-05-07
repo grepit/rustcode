@@ -22,6 +22,13 @@ pub fn notify(item: &impl Summary) {
     println!("Breaking news! {}", item.summarize());
 }
 
+//same as Traits ...it removes the sugar coded syntax
+pub fn notify_nosugar<T: Summary>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+
+
 fn main() {
     let tweet = Tweet {
         username: String::from("John Doe"),
@@ -46,6 +53,9 @@ fn main() {
     println!("{}", summary); // prints "(Read always...)"
 
     notify(&news_article); // Prints "Breaking news! Breaking News, by John Doe (New York)"
+    notify_nosugar(&news_article)
+
+
 
 
 }
