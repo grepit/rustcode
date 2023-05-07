@@ -16,6 +16,12 @@ use traits_news_example::{NewsArticle, Summary, Tweet};
 //     println!("Summary: {}", news_article.summarize());
 // }
 
+
+//Traits as Parameters
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}
+
 fn main() {
     let tweet = Tweet {
         username: String::from("John Doe"),
@@ -38,4 +44,8 @@ fn main() {
    
     println!("--- here we used the default");
     println!("{}", summary); // prints "(Read always...)"
+
+    notify(&news_article); // Prints "Breaking news! Breaking News, by John Doe (New York)"
+
+
 }
