@@ -1,5 +1,5 @@
 
-use traits_news_example::{NewsArticle, Summary, Tweet};
+use traits_news_example::{NewsArticle, Summary, Tweet, WorldNews};
 
 // fn main() {
 //     let news_article = NewsArticle {
@@ -53,9 +53,16 @@ fn main() {
     println!("{}", summary); // prints "(Read always...)"
 
     notify(&news_article); // Prints "Breaking news! Breaking News, by John Doe (New York)"
-    notify_nosugar(&news_article)
+    notify_nosugar(&news_article);
 
+    
+    //using default
+      let world_news = WorldNews {
+       headline: String::from("happy news world news"),
+   };
 
+    let headline = world_news.summarize();
+        println!("{}", headline); // prints "(Read always...)"
 
 
 }
