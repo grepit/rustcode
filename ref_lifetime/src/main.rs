@@ -18,7 +18,8 @@
 
 
 //ERROR and here is why:
-// We’ve told Rust that the lifetime of the reference returned by the longest function is the same as the smaller of the lifetimes of the references passed in. Therefore, the borrow checker disallows the code in Listing 10-23 as possibly having an invalid reference.
+// We’ve told Rust that the lifetime of the reference returned by the longest function is the same as the smaller of the lifetimes of the references passed in. 
+// Therefore, the borrow checker disallows the code in Listing 10-23 as possibly having an invalid reference.
 // fn main() {
 //     let string1 = String::from("long string is long");
 //     let result;
