@@ -1,80 +1,41 @@
-enum MyError {
-    Error {
-        message: String,
-    },
-}
-
-//Example check for integer and throw an exception
-fn divide(x: i32, y: i32) -> Result<i32, MyError> {
-    if y == 0 {
-        return Err(MyError::Error { message: "generic erro by zero".to_string() });
-    }
-
-    Ok(x / y)
-}
-
-//Example check for string 
-fn string_wild(string: &str)  -> Result<usize, String> {
-    if string.is_empty() {
-        return Err("The string is empty.".to_string());
-    }
-    else if string.contains("hi"){
-         return Err("The string is not suppose to have hi.".to_string());
-    }
-
-    return Ok(string.len());
-}
-
+//Pattern 1 to capture error
 
 fn main() {
-    let result = divide(10, 0);
-
-    match result {
-        Ok(value) => println!("The result is {}", value),
-        Err(MyError::Error { message }) => {
-            println!("An error occurred: {}", message);
+    // Simulating a function that can return a Result
+    fn whatever_function(y: i32) -> Result<i32, String> {
+        //#1 The main boiler template code ( inject this to end of begging of your function)
+        if y == 0 {
+            return Err("you really should not use zero".to_string());
         }
+        let return_success_result: i32 = 100;
+        Ok(return_success_result)
+        //end #1
     }
 
-
-
-let mystring = "Hello hi, world!";
-let length = string_wild(&mystring);
-
-match length {
-    Ok(value) => println!("The length of the string is {}.", value),
-    Err(error) => println!("An error occurred: {}", error),
-}
-
-
-}
-
-
-
-
-
-
-/*
-pub struct Guess {
-    value: i32,
-}
-
-
-impl Guess {
-    pub fn new(value: i32) -> Guess {
-        if value < 1 || value > 100 {
-            panic!("Guess value must be between 1 and 100, got {}.", value);
+    //example of capture error when you want to exist from program when it fails
+    fn exit_when_fails_function(some_value: i32) -> i32 {
+        let return_success_result: i32 = 100;
+        if some_value == 0 {
+            panic!("sorry bad value in we are exit the program now");
         }
 
-        Guess { value }
+        println!("value is {}", return_success_result);
+        return return_success_result;
     }
 
-    pub fn value(&self) -> i32 {
-        self.value
-    }
+    // Attempt to perform division
+    let result = whatever_function(0);
+
+    //#2 The main boiler template code , this is where we capture error
+    // Use unwrap_or_else to handle the error case
+    let value = result.unwrap_or_else(|err| {
+        println!("Error: {}", err);
+        // You can provide custom error-handling logic here
+        // For example, returning a default value
+        10
+    });
+    //#2
+
+    println!("Result: {}", value);
+    exit_when_fails_function(0);
 }
-
-  let guess = Guess::new(50000);
-    println!("Guess value is {}.", guess.value());
-*/
-
